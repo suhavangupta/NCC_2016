@@ -1,0 +1,33 @@
+<!-- This Script is from www.htmlfreecodes.com, Provided by: Mahmood Bina -->
+
+
+<center>
+<table bgcolor="white" cellpadding="12" border="1" style="border: 0px dashed #FF0000">
+<tr><td colspan="2" bordercolor="#FFFF00" style="border: 1px solid #FF0000"><center><h1><i><b>
+	<font size="3">Login Area</font></b></i></h1></center></td></tr>
+
+<form  action = "/callingloginpage" method = "post">{% csrf_token %}
+<tr><td height="30" bordercolor="#FFFF00" style="border: 1px solid #FF0000"><h1><i><b>
+	<font size="3">UserID:</font></b></i></h1></td>
+	<td height="64" bordercolor="#FFFF00" style="border: 1px solid #FF0000"><input
+name="username" type="text"></td></tr>
+
+
+<tr><td bordercolor="#FFFF00" style="border: 1px solid #FF0000"><h1><i><b>
+	<font size="3">Password:</font></b></i></h1></td>
+	<td bordercolor="#FFFF00" style="border: 1px solid #FF0000"><input name="password"
+type="password"></td></tr>
+
+
+<tr><td bordercolor="#FFFF00" style="border: 1px solid #FF0000"><h1><i><b>
+	<font size="3">Admin password:</font></b></i></h1></td>
+	<td bordercolor="#FFFF00" style="border: 1px solid #FF0000"><input name="adminpass"
+type="password"></td></tr>
+
+
+<tr><td bordercolor="#FFFF00" style="border: 1px solid #FF0000" height="51"><center><input type="submit" value="Login" "></center></td>
+
+	<td bordercolor="#FFFF00" style="border: 1px solid #FF0000" height="51"><center><input
+type="Reset"></td></tr></table></center> 
+</form>
+<center>{{message}}</centre>

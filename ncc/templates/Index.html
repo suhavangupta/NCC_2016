@@ -1,0 +1,434 @@
+<!<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	{% load staticfiles %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home</title>
+
+  <!-- Material Design Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+ 
+
+</head>
+
+
+
+
+<!--************************* NAVIGATION BAR STARTS *****************************--> 
+
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="{% static "css/materialize.min.css" %}"  media="screen,projection"/>
+       
+
+
+        <script type="text/javascript" src="{% static "js/jquery-2.x.js" %}"></script>
+      <script type="text/javascript" src="{% static "js/materialize.min.js" %}"></script>
+      
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css">
+<!-- Compiled and minified JavaScript -->
+<script src="{% static "js/materialize.min.js" %}"></script>
+  
+<style>    
+nav ul li a{
+  color: white;
+}
+.pisb{
+float: left;
+margin-left:-235px;
+
+} 
+</style> 
+<style type="text/css">
+.home{
+  float: right;
+  margin-left: 600px;
+}   
+
+#timer{
+color:white;
+font-size:50px;
+font-weight:bold;
+}
+</style>
+ </head>
+<body background="{% static "ncca.jpg" %}">
+
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper #009688 teal white-text">
+    <div class="pisb">
+<img src="{% static "pisb.png" %}" height="80%px" width="9.5%">
+     <div class="home">
+    <ul class="right hide-on-med-and-down">
+        <li><a href="/"><big><bold>HOME</bold></big></a></li>
+        <li><a href="/about"><big>About Us</big></a></li>
+        <li><a href="/team"><big>Our Team</big></a></li>
+       
+      </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+ <!--########################################## NAVIGATION BAR ENDS #########################--> 
+<br>
+<!--
+<style>
+.left1 {
+    position: absolute;
+    left: 0px;
+    top: 120px;
+    color: #009688;
+    border-style: double;
+    font-style: italic;
+}
+
+</style>
+<div class="left1">
+<h5> "Empty your memory,<br> with a free()..<br> like a pointer!<br><br>If you cast a pointer to a integer,<br> it becomes the integer,<br>If you cast a pointer to a struct,<br> it becomes the struct..<br><br> The pointer can crash..<br> and can overflow..<br><br> Be a pointer my friend.."</h5>
+<br><br><br><h6>           -Dennis Ritchie</h6>
+</div>
+-->
+<style>
+.center {
+    margin: auto;
+    padding: 10px;
+}
+</style>
+
+<div class="center">
+
+<img src="{% static "ncc.png" %}" height="38%px" width="25%" align="middle">
+
+</div>
+
+
+<!--
+<style>
+.right1 {
+    position: absolute;
+    right: 0px;
+    top: 120px;
+    color: #009688;
+    border-style: double;
+    font-style: italic;
+}
+
+</style>
+
+<div class="right1">
+
+<h4> INSTRUCTIONS </h4><br> <h5>with a free()..<br> like a pointer!<br><br>If you cast a pointer to a integer,<br> it becomes the integer,<br>If you cast a pointer to a struct,<br> it becomes the struct..<br><br> The pointer can crash..<br> and can overflow..<br><br> Be a pointer my friend..<br>all the best"</h5>
+
+</div>-->
+
+<!--******************************************* TIMER STARTS *******************************-->
+
+
+<h1>Contest Starts in...</h1>
+<!--<div id="clockdiv">
+  <div>
+    <span class="minutes"></span>
+    <div class="smalltext">Minutes</div>
+  </div>
+  <div>
+    <span class="seconds"></span>
+    <div class="smalltext">Seconds</div>
+  </div>
+</div>-->
+</body>
+
+<style type="text/css">
+body{
+    text-align: center;
+    
+  font-family: sans-serif;
+  font-weight: 100;
+}
+
+h1{
+  color: #396;
+  font-weight: 100;
+  font-size: 40px;
+  margin: 40px 0px 20px;
+}
+/*
+#clockdiv{
+    font-family: sans-serif;
+    color: #fff;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+    font-size: 30px;
+}
+
+#clockdiv > div{
+    padding: 10px;
+    border-radius: 3px;
+    background: #00BF96;
+    display: inline-block;
+}
+
+#clockdiv div > span{
+    padding: 15px;
+    border-radius: 3px;
+    background: #00816A;
+    display: inline-block;
+}
+
+.smalltext{
+    padding-top: 5px;
+    font-size: 16px;
+}*/
+
+</style>
+
+<!--
+<script type="text/javascript">
+
+function getTimeRemaining(endtime) {
+   
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor((t / 1000) % 60);
+  var minutes = Math.floor((t / 1000 / 60) % 60);
+  
+
+  return {
+    'total': t,
+    'minutes': minutes,
+    'seconds': seconds
+  };
+}
+
+function initializeClock(id, endtime) {
+  var clock = document.getElementById(id);
+  var minutesSpan = clock.querySelector('.minutes');
+  var secondsSpan = clock.querySelector('.seconds');
+
+  function updateClock() {
+    var t = getTimeRemaining(endtime);
+
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+      
+  
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+      
+    }
+           
+
+
+
+
+    setTimeout(function(){
+       window.location='loginpg.html';
+    }, 34400);
+  }
+
+  updateClock();
+  var timeinterval = setInterval(updateClock, 1000);
+}
+
+var deadline = new Date(Date.parse(new Date()) + 15 * 24 * 80);
+
+initializeClock('clockdiv', deadline);
+
+
+</script>
+
+
+</style>
+
+<!--#################################### TIMER ENDS ###############################-->
+
+
+
+<!--*************************** new timer ***************************************-->
+<p id="timer" >TIME 00:00</p>
+
+<script>
+window.setTimeout("refresh()",500);     //refresh() function will be called after 0.5 seconds   generally skip the word windows
+function refresh()
+
+{
+    // The XMLHttpRequest object is used to exchange data with a server behind the scenes. This means that it is possible to update parts of a web page, without reloading the whole page.  
+  var xmlhttp;
+  if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+    }
+  else
+    {// code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+  xmlhttp.onreadystatechange=function()     //Stores a function (or the name of a function) to be called automatically each time the readyState property changes
+    {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)   // '4' means request finished and response is ready
+                                                        //  '200' ststus is OK
+                                                        // '404'    page not found
+      {
+        CreateTimer("timer",parseInt(xmlhttp.responseText));    //Calling the function CreateTimer and passing parameters
+      }
+    }
+  xmlhttp.open("GET","/time",true);         // open(method,url, async)  specifies the type of request
+  xmlhttp.send();       //sends the request to the server
+  return
+}
+  
+</script>
+<script type="text/javascript">
+//window.onload = CreateTimer("timer",{{t}});
+var Timer;
+var TotalSeconds;
+
+
+function CreateTimer(timer, Time) 
+{
+Timer = document.getElementById(timer);     //  To display the updated time
+TotalSeconds = Time;                //  time left in seconds returned by the backend
+
+UpdateTimer()       //  to display tim in format
+window.setTimeout("Tick()", 1000);
+}
+
+function Tick() 
+{
+if (TotalSeconds <= 0)
+ {
+window.location.href="";
+return;
+}
+
+TotalSeconds -= 1;
+UpdateTimer()
+window.setTimeout("Tick()", 1000);
+}
+
+function UpdateTimer() 
+{
+Seconds=TotalSeconds;
+var Hours = Math.floor(Seconds / 3600);     //To get hours and minutes
+Seconds -= Hours * (3600);
+
+var Minutes = Math.floor(Seconds / 60);
+Seconds -= Minutes * (60);
+
+Hours=Hours%24
+
+var totalTime=Set(Minutes)+":"+Set(Seconds);     //time in the correct format
+
+Timer.innerHTML=totalTime;      //Display time
+
+function Set(Time) {            //Doubt
+
+return (Time < 10) ? "0" + Time : + Time;
+
+}
+}
+//The only thing needed is the an html tag with id = "timer" 
+//line 50 window.location.href = ""; or window.location.href = "log_out";
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--########################## new timer ends ###################################-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--************************************ FOOTER STARTS ****************************-->
+
+<style type="text/css">
+  .footer1 {
+   position:fixed;
+   bottom:0;
+   padding-top: 2px;
+   padding-left: 70px;
+   padding-right: 50px;
+   width:100%;
+   height: 5%;
+   background:#009688 ;
+font-family: myFirstFont;
+}
+</style>
+
+  <footer>
+  <br>
+      <div class="footer1">
+   <center style="color:white">Copyright &copy; NCC PISB,2016</center>
+ 
+  </div>
+</footer>
+            
+       
+<!--############################################ FOOTER ENDS ############################-->
+    <!-- SCRIPTS -->
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="{% static "js/jquery-2.2.1.min.js" %}"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <!-- Material Design Bootstrap -->
+    <script type="text/javascript" src="{% static "js/materialize.min.js" %}"></script>
+
+
+
+</body>
+
+</html>
+
+<!--################################################# END ################################-->

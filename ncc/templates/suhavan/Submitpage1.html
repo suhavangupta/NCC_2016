@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    {% load staticfiles %}
+    <title>Submission</title>
+    <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+    <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="{% static "css/materialize.min.css" %}" media="screen,projection"/>
+       
+
+
+        <script type="text/javascript" src="{% "js/jquery-2.x.js" %}"></script>
+      <script type="text/javascript" src="{%static "js/materialize.min.js" %}"></script>
+      
+      <link rel="stylesheet" href="{%static "css/materialize.min.css" %}">
+<!-- Compiled and minified JavaScript -->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js"></script>-->
+  
+<style>    
+nav ul li a{
+  color: white;
+} 
+#tab
+{
+  margin-top: 30px;
+  margin-bottom: 0px;
+  
+} 
+#sub
+{
+  font-size: 35px;
+  font-family:serif;
+  margin-bottom: 10px;
+  margin-left: 39%;
+
+}
+#no
+{
+  font-size: 25px;
+  font-family:serif;
+  margin-top: -25px;
+  margin-bottom: 10px;
+  margin-left: 35%;
+
+}  
+#total
+{
+  font-size: 25px;
+  font-family:serif;
+  margin-top: -25px;
+  margin-bottom: 0px;
+  margin-left: 33%;
+}
+#score
+{
+  font-size: 25px;
+  font-family:serif;
+  margin-top: -15px;
+  margin-bottom: 0px;
+  margin-left: 33%;
+}
+/*#button
+{
+  margin-top: 30px;
+  margin-bottom: 0px;
+  margin-left: 40%; 
+}*/
+#test_case
+{
+ margin-left:44%;
+ margin-top:-4%;
+}
+#totalscore
+{
+ margin-left:50%;
+ margin-top:-3%;
+}
+</style>
+ </head>
+<style type="text/css">
+  .time{
+    margin-left: -150px;
+  }
+</style>
+<body>
+<div class="navbar-fixed">
+  <nav>
+
+    <div class="nav-wrapper #009688 teal white-text">
+      <a href="/questionlist" class="brand-logo">NCC</a>
+      <div class="time">
+      <center><a class="brand-logo" id = "timer">TIME</a></center>
+      </div>
+
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/leaderboard">LEADERBOARD</a></li>
+        <li><a href="/questionlist">QUESTIONS</a></li>
+        <li class="active"><a href="/log_out">LOG OUT</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+
+<div id="sub">
+<p>SUBMISSION</p>
+</div>
+
+
+<div id="no">
+<p>Question No. {{question}}:</p>
+</div>
+
+</header>
+<div class="container">
+<div id="tab">
+ <table class="striped">
+        <thead>
+          <tr>
+              <th data-field="id">TEST CASE</th>
+              <th data-field="name">SCORE</th>
+              <th data-field="price">RESULT</th>   <!---------------------------------------------------------->
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <th>1</td>
+            <th id = "score1"></th>
+            <th id = "status1"></th>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td id = "score2"></td>
+            <td id = "status2"></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td id = "score3"></td>
+            <td id = "status3"></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td id = "score4"></td>
+            <td id = "status4"></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td id = "score5"></td>
+            <td id = "status5"></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      </div>
+      <script>
+      console.log("you are out");
+      </script>
+      <script>
+        console.log("you are in");
+        var data =  setTimeout(myFunction,0);
+        function myFunction() {
+            console.log("function called");
+            var total=0;
+            var data1 = "{{out1}}";
+            var data2 = "{{out2}}";
+            var data3 = "{{out3}}";
+            var data4 = "{{out4}}";
+            var data5 = "{{out5}}";
+            console.log(data1);
+            if (data1 == "R"){ 
+            console.log("you are in the if loop");
+            document.getElementById("score1").innerHTML = 20;
+            document.getElementById("status1").innerHTML = "Test Case Successful";
+            total = total+20;}
+            else {
+            document.getElementById("score1").innerHTML = 0;
+            if(data1 == "C")
+            {
+                document.getElementById("status1").innerHTML = "Compile Time Error";
+            }
+            else if(data1 == "W")
+            {
+                document.getElementById("status1").innerHTML = "Wrong Answer";
+            }
+            else if(data1 == "A")
+            {
+                document.getElementById("status1").innerHTML = "Abnormal Termination";
+            }
+            else
+            {
+                document.getElementById("status1").innerHTML = "Time Limit Exceeded";
+            }
+            }
+            
+            
+            
+            if (data2=="R"){ 
+            document.getElementById("score2").innerHTML = 20;
+            document.getElementById("status2").innerHTML = "Test Case Successful";
+            total = total+20;}
+             else {
+            document.getElementById("score2").innerHTML = 0;
+            if(data2 == "C")
+            {
+                document.getElementById("status2").innerHTML = "Compile Time Error";
+            }
+            else if(data2 == "W")
+            {
+                document.getElementById("status2").innerHTML = "Wrong Answer";
+            }
+            else if(data2 == "A")
+            {
+                document.getElementById("status2").innerHTML = "Abnormal Termination";
+            }
+            else
+            {
+                document.getElementById("status2").innerHTML = "Time Limit Exceeded";
+            }
+            }
+            
+            if (data3=="R"){ 
+            document.getElementById("score3").innerHTML = 20;
+            document.getElementById("status3").innerHTML = "Test Case Successful";
+            total = total+20;}
+             else {
+            document.getElementById("score3").innerHTML = 0;
+            if(data3 == "C")
+            {
+                document.getElementById("status3").innerHTML = "Compile Time Error";
+            }
+            else if(data3 == "W")
+            {
+                document.getElementById("status3").innerHTML = "Wrong Answer";
+            }
+            else if(data3 == "A")
+            {
+                document.getElementById("status3").innerHTML = "Abnormal Termination";
+            }
+            else
+            {
+                document.getElementById("status3").innerHTML = "Time Limit Exceeded";
+            }
+            }
+            
+            if (data4=="R"){ 
+            document.getElementById("score4").innerHTML = 20;
+            document.getElementById("status4").innerHTML = "Test Case Successful";
+            total = total+20;}
+             else {
+            document.getElementById("score4").innerHTML = 0;
+            if(data4 == "C")
+            {
+                document.getElementById("status4").innerHTML = "Compile Time Error";
+            }
+            else if(data4 == "W")
+            {
+                document.getElementById("status4").innerHTML = "Wrong Answer";
+            }
+            else if(data4 == "A")
+            {
+                document.getElementById("status4").innerHTML = "Abnormal Termination";
+            }
+            else
+            {
+                document.getElementById("status4").innerHTML = "Time Limit Exceeded";
+            }
+            }
+            
+            
+            if (data5=="R"){ 
+            document.getElementById("score5").innerHTML = 20;
+            document.getElementById("status5").innerHTML = "Test Case Successful";
+            total = total+20;}
+             else {
+            document.getElementById("score5").innerHTML = 0;
+            if(data5 == "C")
+            {
+                document.getElementById("status5").innerHTML = "Compile Time Error";
+            }
+            else if(data5 == "W")
+            {
+                document.getElementById("status5").innerHTML = "Wrong Answer";
+            }
+            else if(data5 == "A")
+            {
+                document.getElementById("status5").innerHTML = "Abnormal Termination";
+            }
+            else
+            {
+                document.getElementById("status5").innerHTML = "Time Limit Exceeded";
+            }
+}
+    document.getElementById("totalscore").innerHTML = total;
+    document.getElementById("test_case").innerHTML = total/20;
+}
+      </script>
+      
+
+      <div id="total">
+      <br><br>Total test cases passed are : <p id = "test_case"></p>	<!--------------------------------------------------------------->
+      </div>
+      <div id="score">
+      <br>Your score for Question {{question}} is : <p id = "totalscore"></p>	<!---------------------------------------------------------------->
+      </div>
+
+      
+      <!--div id="button">
+     <a class="waves-light btn" href = "back">BACK</a>
+      </div-->
+      
+            
+<!--************************************ FOOTER STARTS ****************************-->
+
+<style type="text/css">
+  .footer1 {
+   position:fixed;
+   bottom:0;
+   padding-top: 2px;
+   padding-left: 70px;
+   padding-right: 50px;
+   width:100%;
+   height: 5%;
+   background:#009688 ;
+font-family: myFirstFont;
+}
+</style>
+
+  <footer>
+  <br>
+      <div class="footer1">
+   <center style="color:white">Copyright &copy; NCC PISB,2016</center>
+ 
+  </div>
+</footer>
+            
+       
+<!--############################################ FOOTER ENDS ############################-->
+
+
+            
+  <script>
+window.setTimeout("refresh()",500);     //refresh() function will be called after 0.5 seconds   generally skip the word windows
+function refresh()
+
+{
+    // The XMLHttpRequest object is used to exchange data with a server behind the scenes. This means that it is possible to update parts of a web page, without reloading the whole page.  
+  var xmlhttp;
+  if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+    }
+  else
+    {// code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+  xmlhttp.onreadystatechange=function()     //Stores a function (or the name of a function) to be called automatically each time the readyState property changes
+    {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)   // '4' means request finished and response is ready
+                                                        //  '200' ststus is OK
+                                                        // '404'    page not found
+      {
+        CreateTimer("timer",parseInt(xmlhttp.responseText));    //Calling the function CreateTimer and passing parameters
+      }
+    }
+  xmlhttp.open("GET","/time",true);         // open(method,url, async)  specifies the type of request
+  xmlhttp.send();       //sends the request to the server
+  return
+}
+  
+</script>
+<script type="text/javascript">
+//window.onload = CreateTimer("timer",{{t}});
+var Timer;
+var TotalSeconds;
+
+
+function CreateTimer(timer, Time) 
+{
+Timer = document.getElementById(timer);     //  To display the updated time
+TotalSeconds = Time;                //  time left in seconds returned by the backend
+
+UpdateTimer()       //  to display tim in format
+window.setTimeout("Tick()", 1000);
+}
+
+function Tick() 
+{
+if (TotalSeconds <= 0)
+ {
+window.location.href="/log_out";
+return;
+}
+
+TotalSeconds -= 1;
+UpdateTimer()
+window.setTimeout("Tick()", 1000);
+}
+
+function UpdateTimer() 
+{
+Seconds=TotalSeconds;
+var Hours = Math.floor(Seconds / 3600);     //To get hours and minutes
+Seconds -= Hours * (3600);
+
+var Minutes = Math.floor(Seconds / 60);
+Seconds -= Minutes * (60);
+
+Hours=Hours%24
+
+var totalTime=Set(Hours)+":"+Set(Minutes)+":"+Set(Seconds);     //time in the correct format
+
+Timer.innerHTML=totalTime;      //Display time
+
+function Set(Time) {            //Doubt
+
+return (Time < 10) ? "0" + Time : + Time;
+
+}
+}
+//The only thing needed is the an html tag with id = "timer" 
+//line 50 window.location.href = ""; or window.location.href = "log_out";
+</script>
+ </body>
+ </html>

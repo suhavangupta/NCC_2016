@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    {% load staticfiles %}
+
+<title>Question</title>
+   
+    <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="{% static "css/materialize.min.css" %}"  media="screen,projection"/>
+       
+
+
+        <script type="text/javascript" src="{% static "js/jquery-2.x.js" %}"></script>
+      <script type="text/javascript" src="{% static "js/materialize.min.js" %}"></script>
+      
+     
+<!--************************************ NAV BAR STARTS ****************************-->
+<style>    
+nav ul li a{
+  color: white;
+}    
+</style>
+ </head>
+<style type="text/css">
+  .time{
+    margin-left: -150px;
+  }
+</style>
+<div class="navbar-fixed">
+  <nav>
+
+    <div class="nav-wrapper #009688 teal white-text">
+      <a href="/questionlist" class="brand-logo">NCC</a>
+      <div class="time">
+      <center><a class="brand-logo" id = "timer"> TIME</a></center>
+      </div>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/leaderboard"><big>LEADERBOARD</big></a></li>
+        <li><a href="/questionlist"><big>QUESTIONS</big></a></li>
+        <li class="active"><a href="/log_out">LOG OUT</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+</header>
+<!--###################################### NAV BAR ENDS ###########################-->
+<br>
+
+<!--************************************* STYLING STARTS **************************-->
+<style>
+/* Force scrollbars onto browser window */
+body {
+
+  
+margin-bottom: 0%;
+}
+
+/* Box styles */
+.myBox {
+border: none;
+padding: 5px;
+font: 20px/32px sans-serif;
+width: 650px;
+height: 580px;
+overflow: scroll;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+width: 50px;
+height: 50px;
+}
+
+::-webkit-scrollbar-track {
+border: 1px solid yellowgreen;
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+background: yellowgreen;  
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: #88ba1c;  
+}
+
+#editor { 
+   position: absolute;
+   top: 120px;
+   right: 10px;
+   bottom: 80px;
+   left: 655px;
+      }
+  #c
+{   position: absolute;
+  margin-left: 670px;
+  margin-top: -150px;
+}
+#r
+{   position: absolute;
+  margin-left: 0px;
+  margin-top: 20px;
+}
+#s
+{
+     position: absolute;
+   margin-left: 160px;
+  margin-top: 20px;
+}
+
+#l
+{
+  position: absolute;
+    margin-left: 660px;
+  margin-top: -690px; 
+}
+#up
+{
+  position: absolute;
+    margin-left: 20px;
+  margin-top: 5px;  
+}
+#sub
+{
+  position: absolute;
+    margin-left: 1020px;
+  margin-top: -60px;  
+}
+
+#deb
+{
+  position: absolute;
+    margin-left: 1020px;
+  margin-top: -700px;  
+}
+#file
+{
+  position: absolute;
+    margin-left: 820px;
+  margin-top:-80px;  
+}
+.ip{
+   
+    margin-top:50px;
+    overflow: scroll;
+    resize:none;
+    width:50%;
+    
+
+}
+#ip2{
+
+	width:50%;					
+  display: none;
+  resize:none;
+}
+
+#lan { 
+
+   position: absolute;
+   top: 580px;
+   margin-left: 680px;
+      }
+#x
+{
+  background-color: black;
+  height:25px;
+  width: 25px;
+  
+  margin-left: 50px;
+
+
+}
+#yx
+{
+  background-color: white;
+  height:25px;
+  width: 25px;
+  margin-left: 35px;
+  border-color: black;
+  
+
+}
+</style>
+ </head>  
+<!--############################# STYLING ENDS ###################-->
+
+
+
+<!--********************** DROPDOWN BUTTON STARTS *****************-->
+  <body>
+ <div class="myBox">
+					 {{question.id}}. {{question.question_name}} <br><br>
+					{{question.question_text | safe}}
+             
+  </div>
+
+  <div class="container-fluid">
+
+ <!--div id="l">
+  <br><br><br><br>
+      <!-- Dropdown Trigger -->
+    
+ 
+
+ 
+  
+ 
+</div>
+
+
+</script>
+<!--############################# DROPDOWN BUTTON ENDS ###################-->
+
+
+
+<!--************************************* FILE UPLOAD STARTS *******************************-->
+	
+	<form action="result" id="formid" method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+
+<div id="file">
+ <!--<form action="#">-->
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>UPLOAD</span>
+        <input type="file" name="doc" value = "FILE" id="doc">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
+  <!--</form>-->
+  </div>
+
+<!--###################################### FILE UPLOAD ENDS #########################-->
+
+
+<!--************************************* BUTTON STARTS ******************************-->
+  <div id="up">
+  
+  
+  <div id="sub">
+  <input class="btn waves-effect  btn" type="button" name="flag" id="submit" value="submit" style="background-color:#008080;color:white">
+</div>
+<div id="deb">
+<br><br><br><br>
+  <input class="btn waves-effect waves-light" type="button" name="flag" value="loadbuffer" id="loadbuffer" style="background-color:#008080;color:white">
+   </div>
+<div id="c">
+<br><br><br><br>
+   <input class="btn waves-effect waves-light" data-toggle="tooltip" title="Save file." type="button" name="flag" value="save" id="save" style="background-color:#008080;color:white">
+   <p id = "demosave"> </p>
+   <input type="hidden" id="user_code" name="user_code">
+   </div>
+
+   <div id="r">
+<br><br><br><br>
+   <input class="btn waves-effect waves-light" type="button" name="flag" value="compile" id="compile" style="background-color:#008080;color:white">
+   </div>
+   <div id="s">
+   <br><br><br><br>
+   <input class="btn waves-effect waves-light" type="button" name="flag" value="RUN" id="run" style="background-color:#008080;color:white">
+   </div>
+</div>
+
+<div id="radio1">
+    <p>
+      <input class="with-gap" type="radio" name="status" value="0" checked="yes" id="test1" onclick="blah();"  />
+      <label for="test1"style="color:black"><strong>STANDARD INPUT</strong></label>
+      <input class="with-gap" type="radio" name="status" value="1" id="test2" onclick="show();" />
+      <label for="test2"style="color:black"><strong>CUSTOM INPUT</strong> </label>
+      
+    </p>
+    
+    </div>
+    <p><strong>INPUT</strong></p>
+  <input type="textarea"  id="ip2" name="custom" >
+      </div>
+<br><br><br>
+  <p><strong>OUTPUT</strong></p>
+  <p  id="demorun" class="ip" ></p>
+      
+    </textarea></div>
+ 
+<!--################################# BUTTON ENDS ############################-->
+
+
+ <!--************************************ ACE EDITOR STARTS ******************************-->
+ <div id="lan">
+    <p>
+      <input class="with-gap" type="radio"  name="language" value="c" checked="yes" id="R1"   />
+      <label for="R1"style="color:black"><strong>C</strong></label>
+      
+       <input class="with-gap" type="radio" name="language" value="cpp" id="R2"  />
+      <label for="R2"style="color:black"><strong>C++</strong> </label>
+      
+       
+    </p>
+    
+    </div>
+  
+
+  <div id="editor"></div>
+ 
+    </form>
+<script src="{% static "ace-builds-master/src-min/ace.js" %}" type="text/javascript" charset="utf-8">
+</script>
+<!--<script>
+var editor = ace.edit("editor");
+editor.getSession().setMode("ace/mode/c_cpp");
+editor.setTheme("ace/theme/clouds_midnight");
+
+</script>-->
+<script type="text/javascript">
+var editor = ace.edit("editor");
+editor.getSession().setMode("ace/mode/c_cpp");
+  
+</script>
+<script>
+function blah()
+{
+  document.getElementById("test1").onClick(document.getElementById("ip2").style.display="none");
+
+}
+function show(){
+  document.getElementById("test2").onClick(document.getElementById("ip2").style.display="block");
+}
+</script>
+
+
+
+
+
+
+<script>
+window.setTimeout("refresh()",500);     //refresh() function will be called after 0.5 seconds   generally skip the word windows
+function refresh()
+
+{
+    // The XMLHttpRequest object is used to exchange data with a server behind the scenes. This means that it is possible to update parts of a web page, without reloading the whole page.  
+  var xmlhttp;
+  if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+	//						xmlhttp.setRequestHeader("X-Requested-With","XMLHttpRequest");
+    xmlhttp=new XMLHttpRequest();
+    }
+  else
+    {// code for IE6, IE5
+	//xmlhttp.setRequestHeader("X-Requested-With","XMLHttpRequest");
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+  xmlhttp.onreadystatechange=function()     //Stores a function (or the name of a function) to be called automatically each time the readyState property changes
+    {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)   // '4' means request finished and response is ready
+                                                        //  '200' ststus is OK
+                                                        // '404'    page not found
+      {
+        CreateTimer("timer",parseInt(xmlhttp.responseText));    //Calling the function CreateTimer and passing parameters
+      }
+    }
+  xmlhttp.open("GET","/time",true);         // open(method,url, async)  specifies the type of request
+  xmlhttp.send();       //sends the request to the server
+  return
+}
+  
+</script>
+<script type="text/javascript">
+//window.onload = CreateTimer("timer",{{t}});
+var Timer;
+var TotalSeconds;
+
+
+function CreateTimer(timer, Time) 
+{
+Timer = document.getElementById(timer);     //  To display the updated time
+TotalSeconds = Time;                //  time left in seconds returned by the backend
+
+UpdateTimer()       //  to display tim in format
+window.setTimeout("Tick()", 1000);
+}
+
+function Tick() 
+{
+if (TotalSeconds <= 0)
+ {
+window.location.href="/log_out";
+return;
+}
+
+TotalSeconds -= 1;
+UpdateTimer()
+window.setTimeout("Tick()", 1000);
+}
+
+function UpdateTimer() 
+{
+Seconds=TotalSeconds;
+var Hours = Math.floor(Seconds / 3600);     //To get hours and minutes
+Seconds -= Hours * (3600);
+
+var Minutes = Math.floor(Seconds / 60);
+Seconds -= Minutes * (60);
+
+Hours=Hours%24
+
+var totalTime=Set(Hours)+":"+Set(Minutes)+":"+Set(Seconds);     //time in the correct format
+
+Timer.innerHTML=totalTime;      //Display time
+
+function Set(Time) {            //Doubt
+
+return (Time < 10) ? "0" + Time : + Time;
+
+}
+}
+//The only thing needed is the an html tag with id = "timer" 
+//line 50 window.location.href = ""; or window.location.href = "log_out";
+</script>
+
+
+<script>
+$(document).ready(function(){
+     function ajaxSubmitForm(button,form,type,datatype){
+      //var code = form.find("input[name='user_code']").val(),
+      	var x = (editor.getSession().getValue());
+      	console.log(x);
+      
+        var lang = form.find("input[name='language']").val(),
+          stats = form.find("input[name='status']").val(),
+          custominput = form.find("input[name='custom']").val(),
+          csrf = form.find("input[name='csrfmiddlewaretoken']").val(),
+          formAction = form.attr('action'),
+          formData = new FormData(form[0]);
+          formData.append('user_code',x);
+          console.log(formData);
+            console.log(datatype); 
+            console.log(lang);
+            console.log(stats);
+            console.log(custominput);   
+          //I have no idea why you have three buttons executing the same submit
+          //But my guess is you want to submit different items with different buttons
+          //You can build that logic here if you want
+            //if(type === 'secret') {
+              //formData.append('username', 'JamesBond');
+            //} else if (type === 'buttonData') {
+            //  formData.append('data', button.data('some-data-attribute'));
+          //   }
+          formData.append('flag',type);
+          console.log(formData);  
+          return $.ajax({
+                type: "POST",
+                dataType : datatype,
+                url: formAction,
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                timeout: 20000
+            });
+    }
+
+    $("#compile").on('click', function(){
+      var button = $(this),
+          //type = $(button).data('type'),
+         // type = $(button).data
+         type = "compile",
+          form = $(button).closest('form'),
+          datatype = "text",
+          submitRequest = ajaxSubmitForm(button,form,type,datatype);
+            console.log(type);
+          submitRequest.done(function(msg){
+            console.log("all done...");
+            console.log(msg);
+            document.getElementById("demorun").innerHTML = msg;
+          }).fail(function(){
+            console.log("Something went wrong...");
+          });
+    });
+
+    $("#save").on('click', function(){
+    console.log("save");
+      var button = $(this),
+         // type = $(button).data('type'),
+          form = $(button).closest('form'),
+          type = "save",
+          datatype = "text",
+          submitRequest = ajaxSubmitForm(button,form,type,datatype);
+          submitRequest.done(function(msg){
+            console.log("all done...");
+            console.log(msg);
+            document.getElementById("demosave").innerHTML = msg;
+          }).fail(function(){
+            console.log("Something went wrong...!!!!!");
+          });
+    });
+
+    $("#run").on('click', function(){
+      var button = $(this),
+         // type = $(button).data('type'),
+          form = $(button).closest('form'),
+          type = "run",
+          datatype = "text",
+          submitRequest = ajaxSubmitForm(button,form,type,datatype);
+            
+          submitRequest.done(function(msg){
+            console.log("all done...");
+            console.log(msg);
+            document.getElementById("demorun").innerHTML = msg;
+          }).fail(function(){
+            console.log("Something went wrong...");
+          });
+    });
+
+    $("#submit").on('click', function(){
+      var button = $(this),
+        //  type = $(button).data('type'),
+          form = $(button).closest('form'),
+          type = "submit",
+          datatype = "html",
+          submitRequest = ajaxSubmitForm(button,form,type,datatype);
+            
+
+          submitRequest.done(function(msg){
+            console.log("all done...");
+            console.log(msg);
+            document.write(msg);
+         }).fail(function(){
+            console.log("Something went wrong...");
+          });
+    });
+    
+    $("#loadbuffer").on('click', function(){
+      var button = $(this),
+        //  type = $(button).data('type'),
+          form = $(button).closest('form'),
+          type = "loadbuffer",
+          datatype = "text",
+          submitRequest = ajaxSubmitForm(button,form,type,datatype);
+            
+
+          submitRequest.done(function(msg){
+            console.log("all done...");
+            console.log(msg);
+	    editor.setValue(msg);
+            //document.getElementById("demo1").innerHTML = msg;
+         }).fail(function(){
+            console.log("Something went wrong...uuuuuuu");
+          });
+    });
+  });
+
+
+
+</script>
+
+
+
+</body>
+
+<!--############################# ACE EDITOR ENDS ###################-->
+<!--***************************** FOOTER ***************************-->
+<br><b><br><br><br><br>
+<style type="text/css">
+  .footer1 {
+   position:relative;
+   bottom:0;
+   padding-top: 2px;
+   padding-left: 70px;
+   padding-right: 50px;
+   width:100%;
+   height: 5%;
+   background:#009688 ;
+font-family: myFirstFont;
+}
+</style>
+  <footer>
+  <br>
+      <div class="footer1">
+   <center style="color:white">Copyright © NCC PISB,2016</center>
+ 
+  </div>
+</footer>
+
+
+
+ </html>
+    
+<!--############################# FOOTER ENDS ###################-->

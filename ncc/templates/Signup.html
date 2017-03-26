@@ -1,0 +1,200 @@
+ <!DOCTYPE html>
+ <html>
+    <head>
+    	{% load staticfiles %}
+      <title>Login</title>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="{% static "css/materialize.min.css" %}"  media="screen,projection"/>
+       
+
+        <script type="text/javascript" src="{% static "js/jquery-2.x.js" %}"></script>
+      <script type="text/javascript" src="{% static "js/materialize.min.js" %}"></script>
+      <style>
+*{
+  margin:0px;
+  padding: 0px;
+}
+
+        body{ max-width: 100%;background-size: 100%;
+            overflow-y: hidden;}
+            @font-face {
+            font-family: credenz;
+            src: url(css/Sol%20Thin%20Regular.ttf);
+        }
+
+        @font-face {
+            font-family: segment;
+            src: url(css/QUIVEIT_.TTF);
+        }
+
+        #text{height:100%;color:white;}
+        #pic{margin-top:150px;}
+        #box{background-color:rgba(10,40,50,100);position:absolute; box-shadow:#4f4f4f 8px 8px 8px;opacity: 0.8;margin-left:800px;margin-top:0px;margin-bottom:-100;height:510px; solid #00040a;-webkit-box-shadow: #4f4f4f 5px 5px 5px;-moz-box-shadow: #4f4f4f 8px 8px 8px; box-shadow: #4f4f4f 5px 5px 5px;"id="box">}
+        
+        #button
+        {
+          margin-top: 100px;
+          margin-bottom: 100px;
+        }
+        </style>
+      </head>
+      
+          
+<body background="{% static "rename.jpeg" %}"><!--class="noscroll"-->
+<div class="head" >
+<p>
+</p>
+</div>
+<!--################################## NAVIGATION BAR ############################### -->
+     <!--Navigation-->
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="{% static "css/materialize.min.css" %}"  media="screen,projection"/>
+       
+
+
+        <script type="text/javascript" src="{% static "js/jquery-2.x.js" %}"></script>
+      <script type="text/javascript" src="{% static "js/materialize.min.js" %}"></script>
+      
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css">
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js"></script>
+  
+<style>    
+nav ul li a{
+  color: white;
+}    
+</style>
+ </head>
+
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper #009688 teal white-text">
+     <center> <a href="" class="brand-logo style="margin-left:-50px;">NCC</a></center>
+        </div>
+  </nav>
+</div>
+<br><br>
+
+<!--#####################################################INSTRUCTIONS######################################################-->
+<style>
+  p{
+    float: left;
+    font-size: 120%;
+     font-family: arial;
+     color: white;
+  background-color: rgba(10,40,50,100);
+  opacity: 0.9;
+  margin-top:0px; 
+  margin-left: 70px;
+   
+  }
+</style>
+<p>
+
+<strong>INSTRUCTIONS : </strong><br><br>
+  1. The contest is of 2 HOURS.<br><br>
+  2. The contest consists of <font color="">6 QUESTIONS.<br><br>
+  3. Each question carries 100 MARKS.<br><br>
+  4. Each question consists of 5 TEST CASES each <br>of 20 marks.<br><br>
+  5. Select a LANGUAGE every time before you<br> submit the code .<br><br>
+  6. SAVE --> LANGUAGE --> SUBMIT.<br><br>
+  7. UPLOAD --> SUBMIT.<br><br>
+
+</p>
+
+<!--######################################################instruction######################################################-->
+<!--#################################### LOGIN PAGE ########################################-->
+ <div class="row offset-s3">
+  <div class="col 12">
+ 
+</div>
+  <div class="col offset-s4 s4 offset-s4 " id="box"> 
+   <div class="row ">
+     <form class="col s10 " style="margin-left: 70px; color:WHITE;" action="/signup" method="POST">
+     {% csrf_token %}
+      <div class="row ">
+        <div class="input-field col s12"style="color:white">
+          <input id="team_name" name = "name1" type="text" class="validate" required>
+          <label for="team_name">Name 1<span style="color:red">*</span></label>
+          </div>
+      </div>
+      <div class="row offset-s1">
+        <div class="input-field col s12">
+          <input  id="user_name" name="name2" type="text"  class="validate">
+          <label for="user_name">Name 2</label>
+          </div>
+        </div>
+        <div class="row offset-s1">
+        <div class="input-field col s12">
+          <input  id="user_name" name="username" type="text"  class="validate" required>
+          <label for="user_name">Username<span style="color:red">*</span></label>
+          </div>
+        </div>
+        
+        <div class="row">
+        <div class="input-field col s12">
+          <input id="password" name="password" type="password" class="validate" required>
+          <label for="password">Password <span style="color:red">*</span></label>
+        </div>
+      </div>
+      <div class="row offset-s1">
+        <div class="input-field col s12">
+          <input  id="user_name" name="email" type="email"  class="validate" required>
+          <label for="user_name">Email id<span style="color:red">*</span></label>
+          </div>
+        </div>
+
+      
+
+    <div class="row " id="button">
+      
+      <div class="col s12 grid-example">
+<center>
+  
+ <button class="btn  waves-light darkblack" style="margin-top:-40px;margin-bottom:-20px;margin-left:-15px;" type="submit" name="action"><b>LOGIN</b>
+    <i class="material-icons"></i>
+  </button></a></center></div>
+    </div>
+  </div>
+    </form>
+  </form>
+  </div>
+  </div>
+  {{ message }}
+ <script type="text/javascript" >
+ </script>
+
+
+
+<!--######################################### FOOTER ####################################################-->   
+  <style type="text/css">
+  .footer1 {
+   position:fixed;
+   bottom:0;
+   padding-top: 2px;
+   padding-left: 70px;
+   padding-right: 50px;
+   width:100%;
+   height: 5%;
+   background:#009688 ;
+font-family: myFirstFont;
+}
+
+</style>
+
+  <footer>
+  <br>
+      <div class="footer1">
+   <center style="color:white">Copyright &copy; NCC PISB,2016</center>
+ 
+  </div>
+</footer>
+
+
+
+</body>
+ </html>
+ 
+</body>
+ </html>

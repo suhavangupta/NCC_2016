@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script src="https://code.jquery.com/jquery-1.10.2.js">
+</script>
+</head>
+<body>
+{{question.id}}. {{question.question_name}}
+<br>
+{{question.question_text}}
+
+<form action="result" id="formid" method="POST" enctype="multipart/form-data">{% csrf_token %}
+<input type="textarea" name="user_code"><br> <!--  BHUL GAYA  -->
+<input type="radio" name="language" value="c" checked="yes">c
+<input type="radio" name="language" value="cpp">c++<br>
+<input type="file" name="doc" value = "FILE" id="doc"> 
+<input type = "radio" name = "status" value = "0" checked = "yes">standard input
+<input type = "radio" name = "status" value = "1">custom input<br>
+<input type = "text" name  = "custom" >custominput<br>
+
+<div>
+<input id = "save" type="button" name="flag" value="save">
+<input id ="compile" type="button" name="flag" value="compile">
+<input id = "run" type="button" name="flag" value="run">
+<input id = "loadbuffer" type="button" name="flag" value="loadbuffer">
+<input id = "submit" type="button" name="flag" value="submit">
+</div>
+</form>
+<a href="/leaderboard">Leaderboard</a>
+<a href="/questionlist">Back To questions</a>
+<br><br><br><br>
+<p id = "demo"></p>
+<br><br>
+</body>
+<script>
+$(document).ready(function(){
+     function ajaxSubmitForm(button,form,type,datatype){
+      var code = form.find("input[name='user_code']").val(),
+          lang = form.find("input[name='language']").val(),
+          stats = form.find("input[name='status']").val(),
+          custominput = form.find("input[name='custom']").val(),
+          csrf = form.find("input[name='csrfmiddlewaretoken']").val(),
+          formAction = form.attr('action'),
+          formData = new FormData(form[0]);
+         // console.log(formData);
+            console.log(datatype);
+          //I have no idea why you have three buttons executing the same submit
+          //But my guess is you want to submit different items with different buttons
+          //You can build that logic here if you want
+            //if(type === 'secret') {
+              //formData.append('username', 'JamesBond');
+            //} else if (type === 'buttonData') {
+            //  formData.append('data', button.data('some-data-attribute'));
+          //   }
+          formData.append('flag',type);
+          console.log(formData);  
+          return $.ajax({
+                type: "POST",
+                dataType : datatype,
+                url: formAction,
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                timeout: 20000
+            });
+    }
+
+    $("#compile").on('click', function(){
+      var button = $(this),
+          //type = $(button).data('type'),
+         // type = $(button).data
+         type = "compile",
+          form = $(button).closest('form'),
+          datatype = "text",
+          submitRequest = ajaxSubmitForm(button,form,type,datatype);
+            console.log(type);
+          submitRequest.done(function(msg){
+            console.log("all done...");
+            console.log(msg);
+            document.getElementById("demo").innerHTML = msg;
+          }).fail(function(){
+            console.log("Something went wrong...");
+          });
+    });
+
+    $("#save").on('click', function(){
+      var button = $(this),
+         // type = $(button).data('type'),
+          form = $(button).closest('form'),
+          type = "save",
+          datatype = "text",
+          submitRequest = ajaxSubmitForm(button,form,type,datatype);
+            
+          submitRequest.done(function(msg){
+            console.log("all done...");
+            console.log(msg);
+            document.getElementById("demo").innerHTML = msg;
+          }).fail(function(){
+            console.log("Something went wrong...");
+          });
+    });
+
+    $("#run").on('click', function(){
+      var button = $(this),
+         // type = $(button).data('type'),
+          form = $(button).closest('form'),
+          type = "run",
+          datatype = "text",
+          submitRequest = ajaxSubmitForm(button,form,type,datatype);
+            
+          submitRequest.done(function(msg){
+            console.log("all done...");
+            console.log(msg);
+            document.getElementById("demo").innerHTML = msg;
+          }).fail(function(){
+            console.log("Something went wrong...");
+          });
+    });
+
+    $("#submit").on('click', function(){
+      var button = $(this),
+        //  type = $(button).data('type'),
+          form = $(button).closest('form'),
+          type = "submit",
+          datatype = "html",
+          submitRequest = ajaxSubmitForm(button,form,type,datatype);
+            
+
+          submitRequest.done(function(msg){
+            console.log("all done...");
+            console.log(msg);
+            document.getElementById("demo").innerHTML = msg;
+         }).fail(function(){
+            console.log("Something went wrong...");
+          });
+    });
+    
+    $("#loadbuffer").on('click', function(){
+      var button = $(this),
+        //  type = $(button).data('type'),
+          form = $(button).closest('form'),
+          type = "loadbuffer",
+          datatype = "text",
+          submitRequest = ajaxSubmitForm(button,form,type,datatype);
+            
+
+          submitRequest.done(function(msg){
+            console.log("all done...");
+            console.log(msg);
+            document.getElementById("demo").innerHTML = msg;
+         }).fail(function(){
+            console.log("Something went wrong...");
+          });
+    });
+  });
+
+
+
+</script>
+</html>

@@ -1,0 +1,231 @@
+<!<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	{% load staticfiles %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Us</title>
+
+  <!-- Material Design Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+ 
+
+</head>
+
+
+
+
+<!--*************************************** NAVIGATION BAR STARTS ********************->
+    <!--Navigation-->
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="{% static "css/materialize.min.css" %}"  media="screen,projection"/>
+       
+
+
+        <script type="text/javascript" src="{% static "js/jquery-2.x.js" %}"></script>
+      <script type="text/javascript" src="{% static "js/materialize.min.js" %}"></script>
+      
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css">
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js"></script>
+  
+<style>    
+nav ul li a{
+  color: white;
+}    
+</style>
+ </head>
+
+<style type="text/css">
+.home{
+  float: right;
+  margin-left: 600px;
+}   
+</style>
+ </head>
+
+<style type="text/css">
+  .time{
+    margin-left: -150px;
+  }
+</style>
+
+
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper #009688 teal white-text">
+   
+  <div class="time">
+      <center><a class="brand-logo" id = "timer"> TIME</a></center>
+      </div>
+       <div class="pisb">
+<img src="{% static "pisb.png" %}" height="80%px" width="9.5%">
+     <div class="home">
+    <ul class="right hide-on-med-and-down">
+        <li class="active"><a href="/"><big>HOME</big></a></li>
+        <li class="active"><a href="/about"><big>About Us</big></a></li>
+        <li class="active"><a href="/team"><big>Our Team</big></a></li>
+       
+      </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+ <!--########################################## NAVIGATION BAR ENDS #########################--> 
+<br>
+<center><h3>About Us</h3></center>
+
+<hr style="height:1px;border:none;color:#DCDCDC;background-color:#DCDCDC;width:900px" />
+
+<style>
+p {
+    color: black;
+    font-family: arial;
+    font-size: 150%;
+}
+</style>
+<br>
+<center><p>National Computing Contest(NCC) was held in PICT campus on the 16th of Feb'10.It was organized by PICT-IEEE  Student Branch in collaboration with Nalini Foundation.The event is being organanized since the past few years and is regarded as reputed national level computing contest.
+                    In keeping with the tradition of bringing the best coders of the city under one roof,PISB is organizing NCC.</p></center>
+                    <center><p>The competition comprises of several algorithmic problems of varying difficulty,which are to be solved by the participants in C/C++.So,are you ready to analyze algorithms,search strings and traverse trees to climb your way up to the victory?</p></center>
+       </p></center>
+
+
+
+<!--************************************ FOOTER STARTS ****************************-->
+
+<style type="text/css">
+  .footer1 {
+   position:fixed;
+   bottom:0;
+   padding-top: 2px;
+   padding-left: 70px;
+   padding-right: 50px;
+   width:100%;
+   height: 5%;
+   background:#009688 ;
+font-family: myFirstFont;
+}
+</style>
+
+  <footer>
+  <br>
+      <div class="footer1">
+   <center style="color:white">Copyright &copy; NCC PISB,2016</center>
+ 
+  </div>
+</footer>
+            
+       
+<!--############################################ FOOTER ENDS ############################-->
+    <!-- SCRIPTS -->
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="{% static "js/jquery-2.2.1.min.js" %}"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <!--script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <!-- Material Design Bootstrap -->
+    <script type="text/javascript" src="{% static "js/materialize.js" %}"></script>
+
+<script>
+window.setTimeout("refresh()",500);     //refresh() function will be called after 0.5 seconds   generally skip the word windows
+function refresh()
+
+{
+    // The XMLHttpRequest object is used to exchange data with a server behind the scenes. This means that it is possible to update parts of a web page, without reloading the whole page.  
+  var xmlhttp;
+  if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+    }
+  else
+    {// code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+  xmlhttp.onreadystatechange=function()     //Stores a function (or the name of a function) to be called automatically each time the readyState property changes
+    {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)   // '4' means request finished and response is ready
+                                                        //  '200' ststus is OK
+                                                        // '404'    page not found
+      {
+        CreateTimer("timer",parseInt(xmlhttp.responseText));    //Calling the function CreateTimer and passing parameters
+      }
+    }
+  xmlhttp.open("GET","/time",true);         // open(method,url, async)  specifies the type of request
+  xmlhttp.send();       //sends the request to the server
+  return
+}
+  
+</script>
+<script type="text/javascript">
+//window.onload = CreateTimer("timer",{{t}});
+var Timer;
+var TotalSeconds;
+
+
+function CreateTimer(timer, Time) 
+{
+Timer = document.getElementById(timer);     //  To display the updated time
+TotalSeconds = Time;                //  time left in seconds returned by the backend
+
+UpdateTimer()       //  to display time in format
+window.setTimeout("Tick()", 1000);
+}
+
+function Tick() 
+{
+if (TotalSeconds <= 0)
+ {
+window.location.href="";
+return;
+}
+
+TotalSeconds -= 1;
+UpdateTimer()
+window.setTimeout("Tick()", 1000);
+}
+
+function UpdateTimer() 
+{
+Seconds=TotalSeconds;
+var Hours = Math.floor(Seconds / 3600);     //To get hours and minutes
+Seconds -= Hours * (3600);
+
+var Minutes = Math.floor(Seconds / 60);
+Seconds -= Minutes * (60);
+
+Hours=Hours%24
+
+var totalTime=Set(Minutes)+":"+Set(Seconds);     //time in the correct format
+
+Timer.innerHTML=totalTime;      //Display time
+
+function Set(Time) {            //Doubt
+
+return (Time < 10) ? "0" + Time : + Time;
+
+}
+}
+//The only thing needed is the an html tag with id = "timer" 
+//line 50 window.location.href = ""; or window.location.href = "log_out";
+</script>
+
+
+</body>
+
+
+</html>
+
+<!--################################################# END ################################-->
+
